@@ -1,6 +1,8 @@
 Usage
 -----
 
+```npm install async-promise-proxy```
+
 ## GeneratorToPromise
 Used to wraps a es6 class that has generator methods, and proxies it into a promise. This is better expained with an example:
 
@@ -70,7 +72,7 @@ someFakeApi
 
 ## NoMethodCatcher
 
-Inherit from this class to setup a __noSuchMethod__ like behavior in your class. Note this only works with node/io.js/ any server side js engine that supports the Proxy behavior.  For node.js however you don't need to run with the --harmony-proxies flag, including the library does that for you.
+Inherit from this class to setup a __noSuchMethod__ like behavior in your class. Note this only works with node/io.js/)any server side js engine that supports the Proxy behavior).  For node.js however you don't need to run with the --harmony-proxies flag, including the library does that for you.
 
 es6 example:
 ```javascript
@@ -100,6 +102,40 @@ class IAcceptAllMethods extends NoMethodCatcher {
 		return this.proxy();
 	}
 }
+
+var test = new IAcceptAllMethods();
+
+test.someMethodThatDoesntExist('does', 'not', 'exist') // --> got unhandled method: someMethodThatDoesntExist with args does, not, exist
+test
+	.actualMethod() // --> Got a call on the actual method.
+	.soWhat('ever') // --> got unhandled method: soWhat with args ever
+
+```
+
+es5 example:
+```javascript
+var NoMethodCatcher = require('async-promise-proxy').NoMethodCatcher;
+
+function IAcceptAllMethods() {
+	this.setup(this.catchTheMethods);
+
+	return this.proxy();
+};
+
+// the only real difference.
+IAcceptAllMethods.prototype = new NoMethodCatcher();
+
+IAcceptAllMethods.prototype.catchTheMethods = function (name, args) {
+	console.log("got unhandled method: "+name+" with args "+args.join(", "));
+};
+
+IAcceptAllMethods.prototype.actualMethod = function () {
+	console.log("Got a call on the actual method.");
+
+	//note: if you want a fluent interface you have to return this.proxy() and not this
+	return this.proxy();
+};
+
 
 var test = new IAcceptAllMethods();
 
