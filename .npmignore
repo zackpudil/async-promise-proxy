@@ -1,0 +1,5 @@
+dist
+test
+src
+build-reference.js
+gulpfile.js
