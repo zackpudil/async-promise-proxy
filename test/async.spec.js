@@ -1,7 +1,7 @@
 import {} from 'co-mocha';
 import {expect} from 'chai';
 import async from './async';
-import {TestDefinedGenerator, TestProxyGenerator} from './mocks/mock-generators';
+import {TestDefinedGenerator, TestProxyGenerator} from './test-subjects/generator-subjects';
 import {checkDone} from './util';
 
 var superComplicatedTest = function* () {

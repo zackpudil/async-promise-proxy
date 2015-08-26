@@ -1,7 +1,7 @@
 import {} from 'co-mocha';
 import {expect} from 'chai';
 import sinon from 'sinon';
-import {Test, TestGenerator} from './mocks/mock-class';
+import {Test, TestGenerator} from './test-subjects/class-subjects';
 
 describe("Proxy", function () {
 	describe("No generators", function () {

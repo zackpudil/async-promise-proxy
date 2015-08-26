@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import GeneratorToPromiseDelegate from './generator-to-promise';
-import {TestDefinedGenerator, TestProxyGenerator} from './mocks/mock-generators';
+import {TestDefinedGenerator, TestProxyGenerator} from './test-subjects/generator-subjects';
 import {checkDone} from './util';
 
 describe("GeneratorToPromiseDelegate", function () {
