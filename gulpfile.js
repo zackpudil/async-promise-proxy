@@ -14,7 +14,7 @@ gulp.task('build', ['babel'], function() {
 	
 	return u 
 		.merge()
-		//.uglify()
+		.uglify()
 		.exportToFile("./async-promise-proxy.js");
 });
 
