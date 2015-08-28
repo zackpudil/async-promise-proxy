@@ -1,8 +1,8 @@
 {
   "name": "async-promise-proxy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Using es6 Proxy, Promise and function generators to create a dynamic wrapper that generates promises from yields",
-  "main": "async-promise-proxy.js",
+  "main": "main.js",
   "scripts": {
     "prepublish": "gulp test && gulp build",
     "test": "gulp test"
