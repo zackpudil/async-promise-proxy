@@ -1,6 +1,6 @@
 
 /*
-	This is the build reference file.  Used by the node-uglifier to include es6 transpiler dependencies into the moonbase-api.js output.
+	This is the build reference file.  Used by the node-uglifier to include es6 transpiler dependencies into the main.js output.
 */
 
 /***

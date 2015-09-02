@@ -10,12 +10,16 @@ var uglifier = require("node-uglifier");
 var path = require('path');
 
 gulp.task('build', ['babel'], function() {
-	var u = new uglifier("./build-reference.js")
-	
-	return u 
+	new uglifier("./build-reference.js")
 		.merge()
 		.uglify()
 		.exportToFile("./main.js");
+
+	new uglifier("./dist/index.js")
+		.merge()
+		.uglify()
+		.exportToFile("./no-shim.js");
+
 });
 
 gulp.task('babel', function () { 

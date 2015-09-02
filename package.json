@@ -4,7 +4,6 @@
   "description": "Using es6 Proxy, Promise and function generators to create a dynamic wrapper that generates promises from yields",
   "main": "main.js",
   "scripts": {
-    "prepublish": "gulp test && gulp build",
     "test": "gulp test"
   },
   "keywords": [
