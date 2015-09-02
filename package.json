@@ -1,6 +1,6 @@
 {
   "name": "async-promise-proxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Using es6 Proxy, Promise and function generators to create a dynamic wrapper that generates promises from yields",
   "main": "main.js",
   "scripts": {
