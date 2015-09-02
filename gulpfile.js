@@ -7,21 +7,6 @@ var concat = require('gulp-concat');
 var mocha = require('gulp-mocha');
 var uglifier = require("node-uglifier");
 
-var path = require('path');
-
-gulp.task('build', ['babel'], function() {
-	new uglifier("./build-reference.js")
-		.merge()
-		.uglify()
-		.exportToFile("./main.js");
-
-	new uglifier("./dist/index.js")
-		.merge()
-		.uglify()
-		.exportToFile("./no-shim.js");
-
-});
-
 gulp.task('babel', function () { 
     return gulp.src(['src/**/*.js', 'test/**/*.js'])
         .pipe(babel())
@@ -33,8 +18,21 @@ gulp.task('test', ['babel'], function () {
 		.pipe(mocha());
 });
 
+gulp.task('build', ['babel'], function() {
+	new uglifier("./shim.js")
+		.merge()
+		.uglify()
+		.exportToFile("./main.js");
+
+	new uglifier("./dist/index.js")
+		.merge()
+		.uglify()
+		.exportToFile("./no-shim.js");
+
+});
+
 gulp.task('watch', function() { 
-    gulp.watch(["src/**/*.js", "test/**/*.spec.js", "dist/**/*.js"], ['babel', 'test']);
+    gulp.watch(["src/**/*.js", "test/**/*.spec.js"], ['test']);
 });
 
 gulp.task('default', ['watch']); 

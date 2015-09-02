@@ -1,5 +1,5 @@
 dist
 test
 src
-build-reference.js
+shim.js
 gulpfile.js
